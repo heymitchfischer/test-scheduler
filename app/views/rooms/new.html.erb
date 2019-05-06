@@ -1,0 +1,23 @@
+<div class="row justify-content-center">
+  <div class="col-6">
+    <h1 class="text-center">Host a Room</h1>
+    <%= form_tag("/rooms", method: :post) do %>
+      <div class="form-group">
+        <%= label_tag(:room_name, "Enter a name for your room:") %>
+        <%= text_field_tag(:room_name, @room.name, placeholder: "e.g. Board Meeting", class: "form-control") %>
+      </div>
+      <div class="form-group">
+        <%= label_tag(:room_description, "Enter a description for your room:") %>
+        <%= text_area_tag(:room_description, @room.description, placeholder: "e.g. Let's try for May or June", class: "form-control") %>
+      </div>
+      <div class="form-group">
+        <%= label_tag(:user_name, "Your name:") %>
+        <%= text_field_tag(:user_name, current_user ? current_user.user_name : nil, placeholder: "e.g. Jon Snow", class: "form-control") %>
+      </div>
+      <%= submit_tag("Create Room", class: "btn btn-success") %>
+    <% end %>
+    <div class="text-right">
+      <%= link_to("Or join a room.", "/rooms", method: :get) %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div data-channel-subscribe="room" data-room-code="<%= @room.code %>">
+  <h1><%= @room.name %></h1>
+  <p><%= @room.description %></p>
+  <div class="row">
+    <div class="col-3 user-container">
+      <h2>Users</h2>
+      <ul class="user-list">
+        <% @room.users.order(user_name: :asc).each do |user| %>
+          <li data-user-name="<%= user.user_name %>" class="<%= 'online' if user.online? %>"><%= user.user_name %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-9 dates-container">
+      <div class="row justify-content-center">
+        <% years.each do |year| %>
+          <div class="col-sm-4">
+            <div class="year">
+              <h3 class="text-center"><%= year %></h3>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
